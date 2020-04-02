@@ -5,6 +5,11 @@
     <groupId>com.zeny.springcloud</groupId>
     <artifactId>springcloud2020</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <modules>
+        <module>cloud-provider-payment8001</module>
+        <module>cloud-consumer-order80</module>
+        <module>cloud-api-commons</module>
+    </modules>
     <packaging>pom</packaging>
 
     <properties>
@@ -88,10 +93,15 @@
     </dependencyManagement>
 
     <build>
+        <finalName>cloud2020</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <fork>true</fork>
+                    <addResources>true</addResources>
+                </configuration>
             </plugin>
         </plugins>
     </build>
