@@ -30,4 +30,8 @@ springcloud alibaba
             eviction-interval-timer-in-ms: 2000
 #### jar包冲突
     mvn dependency:tree > 1.log，查看重复依赖，使用exclusions排除
+
+#### 使用zookeeper为注册中心
+      生产者: cloud-provider-payment8004
+      消费者: cloud-consumer-zk-order80
 #### 作者：zeny
