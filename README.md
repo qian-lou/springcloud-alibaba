@@ -70,4 +70,6 @@ springcloud alibaba
     
     消费者：cloud-consumer-consul-order80
     生产者：cloud-provider-consul-payment8006
+
+#### AP:eureka, CP:zookeeper、consul
 #### 作者：zeny
