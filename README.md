@@ -3,28 +3,11 @@
 #### 介绍
 springcloud alibaba
 
-#### 软件架构
-软件架构说明
-
-
-#### 安装教程
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### 使用说明
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### 参与贡献
-
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
-
+eureka高可用集群配置：
+    在hosts文件配置:
+    127.0.0.1 eureka7001.com,
+    127.0.0.1 eureka7002.com,
+    127.0.0.1 eureka7003.com
+    eureka集群：cloud-eureka-server7001,cloud-eureka-server7002,cloud-eureka-server7003
 
 #### 作者：zeny
