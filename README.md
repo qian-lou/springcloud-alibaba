@@ -72,4 +72,27 @@ springcloud alibaba
     生产者：cloud-provider-consul-payment8006
 
 #### AP:eureka, CP:zookeeper、consul
+
+#### LB负载均衡（load balance）
+     将用户的请求平均的分配到多个服务商，从而达到系统的HA（高可用）
+     常见的负载均衡有Nginx,LVS,硬件F5等
+#### Ribbon本地负载均衡客户端 VS Nginx服务端负载均衡
+     Nginx是服务端负载均衡，客户端所有的请求都会交给Nginx，然后由Nginx实现转发请求。即负载均衡是由服务端实现的（集中式）
+     Ribbon本地负载均衡，在调用微服务接口时候，会在注册中心上获取注册信息服务列表之后缓存到JVM本地，从而在本地实现RPC远程服务调用技术（进程内）
+
+#### Ribbon负载均衡--随机
+     消费者：cloud-consumer-order80 -> myrule -> MySelfRule   覆盖原有的轮询算法
+     @RibbonClient(name = "CLOUD-PAYMENT-SERVICE", configuration = MySelfRule.class)
+     
+#### 负载均衡算法--轮询算法
+    rest接口第几次请求数 % 服务器集群总数量 = 实际调用服务器位置下标， 每次服务重启后rest接口计数从1开始
+    如：List[0] instances = 127.0.0.1:8002
+        List[1] instances = 127.0.0.1:8001
+        8002 + 8001 组成集群， 集群总数 2 ， 按照轮训算法原理：
+        总请求数：1   1 % 2 = 1  -> 127.0.0.1:8001
+                 2   2 % 2 = 0  -> 127.0.0.1:8002
+                 3   3 % 2 = 1  -> 127.0.0.1:8001
+                 .      .               .
+                 .      .               .
+                 .      .               .
 #### 作者：zeny
