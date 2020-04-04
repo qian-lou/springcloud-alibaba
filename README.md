@@ -151,4 +151,7 @@ springcloud alibaba
 #### 自定义负载均衡算法--轮询
     cloud-consumer-order80 -> com.zeny.springcloud.lb -> 接口LoadBalancer
                                                       -> 实现类MyLoadBalancer
+                                                  
+#### openfeign
+     参考cloud-consumer-feign-order80
 #### 作者：zeny
