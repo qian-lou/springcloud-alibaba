@@ -201,4 +201,14 @@ springcloud alibaba
         格式: curl -X POST "http://配置中心IP:配置中心端口/actuator/bus-refresh/[微服务名称(spring.application.name)]:[微服务端口(server.port)]"
         例如: curl -X POST "http://localhost:3344/actuator/bus-refresh/config-client:3355"
         
+#### stream
+    中间件: rabbitmq
+    生产者: cloud-stream-rabbitmq-provider8801
+    消费者: 
+            cloud-stream-rabbitmq-consumer8802
+            cloud-stream-rabbitmq-consumer8803
+    重复消费:
+        原因: 默认分组group是不同的, 组流水号不一样，被认为不同组, 可以消费
+        解决办法: 自定义配置分为同一个组
+    
 #### 作者：zeny
