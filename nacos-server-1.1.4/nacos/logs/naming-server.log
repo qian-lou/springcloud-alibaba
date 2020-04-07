@@ -1,0 +1,50 @@
+2020-04-07 23:41:16,827 INFO listen for service meta change
+
+2020-04-07 23:41:21,124 INFO [SERVER-INIT] got port: 8848
+
+2020-04-07 23:41:21,124 INFO [SERVER-INIT] got path: /nacos
+
+2020-04-07 23:41:22,688 INFO receive config info: unknown#192.168.1.20:8848#1586274082688#6
+
+
+2020-04-07 23:41:24,690 INFO [NACOS-DISTRO] healthy server list changed, disable health check for 60000 ms from now on, old: [], new: [{"adWeight":0,"alive":true,"ip":"192.168.1.20","key":"192.168.1.20:8848","lastRefTime":1586274082688,"lastRefTimeStr":"2020-04-07 23:41:22","servePort":8848,"site":"unknown","weight":6}]
+
+2020-04-07 23:41:24,690 INFO receive config info: unknown#192.168.1.20:8848#1586274084690#6
+
+
+2020-04-07 23:41:26,692 INFO receive config info: unknown#192.168.1.20:8848#1586274086692#6
+
+
+2020-04-07 23:41:28,692 INFO receive config info: unknown#192.168.1.20:8848#1586274088692#6
+
+
+2020-04-07 23:41:30,694 INFO receive config info: unknown#192.168.1.20:8848#1586274090694#6
+
+
+2020-04-07 23:41:32,695 INFO receive config info: unknown#192.168.1.20:8848#1586274092695#6
+
+
+2020-04-07 23:41:34,695 INFO receive config info: unknown#192.168.1.20:8848#1586274094695#6
+
+
+2020-04-07 23:41:36,696 INFO receive config info: unknown#192.168.1.20:8848#1586274096696#6
+
+
+2020-04-07 23:41:38,697 INFO receive config info: unknown#192.168.1.20:8848#1586274098697#6
+
+
+2020-04-07 23:41:40,698 INFO receive config info: unknown#192.168.1.20:8848#1586274100698#6
+
+
+2020-04-07 23:41:42,698 INFO receive config info: unknown#192.168.1.20:8848#1586274102698#6
+
+
+2020-04-07 23:41:44,699 INFO receive config info: unknown#192.168.1.20:8848#1586274104699#6
+
+
+2020-04-07 23:41:46,701 INFO receive config info: unknown#192.168.1.20:8848#1586274106701#6
+
+
+2020-04-07 23:41:48,703 INFO receive config info: unknown#192.168.1.20:8848#1586274108703#6
+
+
