@@ -179,5 +179,23 @@ springcloud alibaba
     从gitee上拉取: cloud-config-center-3344
     从3344上拉取: cloud-config-client-3355
     需要发送curl -X POST "http://localhost:3355/actuator/refresh"，刷新一下3355上的配置
+
+#### bus
+    总线:
+        在微服务架构的系统中，通常会使用轻量级的消息代理来构建一个公用的消息主题, 并让系统中所有微服务实例都连接上来。
+    由于该主题中产生的消息会被所有实例监听和消费，所以称它为消息总线。在总线的各个实例，都可以方便地广播一些需要让其他连接在该主题上的实例都知道的消息
+    基本原理:
+        ConfigClient实例都监听MQ中同一个topic（默认是springCloudBus）。当一个服务刷新数据的时候, 它会把这个消息放入到topic中
+        这样其他监听同一个topic的服务就能得到通知, 然后去更新自身的配置
+        
+    安装rabbitmq
+    从gitee上拉取: cloud-config-center-3344
+    从3344上拉取: 
+        client01: cloud-config-client-3355
+        client02: cloud-config-client-3366
+        需要发送curl -X POST "http://localhost:3344/actuator/bus-refresh", 刷新一下3355上的配置
+        
+        -> 实现了所有client不用重启就刷新了本地配置
+    
     
 #### 作者：zeny
