@@ -154,4 +154,28 @@ springcloud alibaba
                                                   
 #### openfeign
      参考cloud-consumer-feign-order80
+     
+#### hystrix
+    服务降级:
+        服务器忙，请稍后再试，不让客户端等待并立即返回一个友好提示
+        服务降级情况: 1、程序运行异常
+                     2、超时
+                     3、服务熔断触发服务降级
+                     4、线程池/信号量打满也会导致服务降级
+    服务熔断:
+        类似保险丝达到最大服务访问后，直接拒绝访问，拉闸限电，然后调用服务降级的方法返回友好提示
+        就是保险丝 服务的降级 -> 进而熔断 -> 回复调用链路
+    
+    服务限流: 
+        秒杀高并发等操作，严禁一窝蜂的过来拥挤，大家排队，一秒N个，有序进行
+    
+    生产者: cloud-provider-hystrix-payment8001
+    消费者: cloud-consumer-feign-hystrix-order80
+    监控平台: cloud-consumer-hystrix-dashboard9001
+
+#### gateway网关  
+    cloud-gateway-gateway9527
+#### config配置中心
+    
+    
 #### 作者：zeny
