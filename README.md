@@ -176,6 +176,8 @@ springcloud alibaba
 #### gateway网关  
     cloud-gateway-gateway9527
 #### config配置中心
-    
+    从gitee上拉取: cloud-config-center-3344
+    从3344上拉取: cloud-config-client-3355
+    需要发送curl -X POST "http://localhost:3355/actuator/refresh"，刷新一下3355上的配置
     
 #### 作者：zeny
