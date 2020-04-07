@@ -176,8 +176,8 @@ springcloud alibaba
 #### gateway网关  
     cloud-gateway-gateway9527
 #### config配置中心
-    从gitee上拉取: cloud-config-center-3344
-    从3344上拉取: cloud-config-client-3355
+    配置中心从gitee上拉取: cloud-config-center-3344
+    服务client从3344上拉取: cloud-config-client-3355
     需要发送curl -X POST "http://localhost:3355/actuator/refresh"，刷新一下3355上的配置
 
 #### bus
@@ -189,13 +189,16 @@ springcloud alibaba
         这样其他监听同一个topic的服务就能得到通知, 然后去更新自身的配置
         
     安装rabbitmq
-    从gitee上拉取: cloud-config-center-3344
-    从3344上拉取: 
+    配置中心从gitee上拉取: cloud-config-center-3344
+    服务client从3344上拉取: 
         client01: cloud-config-client-3355
         client02: cloud-config-client-3366
         需要发送curl -X POST "http://localhost:3344/actuator/bus-refresh", 刷新一下3355上的配置
         
         -> 实现了所有client不用重启就刷新了本地配置
     
-    
+    动态刷新定点通知: 只想通知某一个实例
+        格式: curl -X POST "http://配置中心IP:配置中心端口/actuator/bus-refresh/[微服务名称(spring.application.name)]:[微服务端口(server.port)]"
+        例如: curl -X POST "http://localhost:3344/actuator/bus-refresh/config-client:3355"
+        
 #### 作者：zeny
