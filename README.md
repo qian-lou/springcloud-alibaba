@@ -211,4 +211,17 @@ springcloud alibaba
         原因: 默认分组group是不同的, 组流水号不一样，被认为不同组, 可以消费
         解决办法: 自定义配置分为同一个组,同时可以持久化消息, 当服务重启后能继续接受到消息（不设置自定义分组会出现消息丢失）
     
+#### zipkin
+    下载zipkin-server-2.10.1-exec.jar
+    运行: java -jar zipkin-server-2.10.1-exec.jar
+    访问地址: http://localhost:9411
+    调用者:cloud-consumer-order80
+    被调用者: cloud-provider-payment8001
+    在zipkin中可以看到详细的调用情况
+
+####  springcloud alibaba
+    地址: https://github.com/alibaba/spring-cloud-alibaba/blob/master/README-zh.md
+
+#### nacos
+    
 #### 作者：zeny
