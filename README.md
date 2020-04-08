@@ -223,5 +223,16 @@ springcloud alibaba
     地址: https://github.com/alibaba/spring-cloud-alibaba/blob/master/README-zh.md
 
 #### nacos
-    
+    下载: nacos-server-1.1.4
+    运行: 点击 bin 下的 startup.cmd
+    访问: http://localhost:8848/nacos
+          用户名: nacos
+          密码:   nacos
+    消费者: cloudalibaba-consumer-nacos-order83
+    生产者: 
+        client01: cloudalibaba-provider-payment9001
+        client02: cloudalibaba-provider-payment9002
+#### nacos配置中心config
+    bootstrap优先级高于application
+    项目: cloudalibaba-config-nacos-client3377
 #### 作者：zeny
