@@ -249,9 +249,86 @@ springcloud alibaba
                 db.url.0=jdbc:mysql://192.168.1.19:3311/nacos_config?characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true
                 db.user=root
                 db.password=123456
-    Linux集群:
-    下载: nacos-server-1.1.4.tar.gz
-        192.168.1.19:3333
-        192.168.1.19:4444
-        192.168.1.19:5555
+    Linux版nacos集群:
+        1个Nginx+3nacos注册中心+1个mysql
+        1、nacos集群
+            1)下载: nacos-server-1.1.4.tar.gz
+            2)解压: tar -zxvf nacos-server-1.1.4.tar.gz
+            3)进入conf文件夹下修改cluster.conf,修改后(注意,这个IP不能写127.0.0.1，必须是Linux命令hostname -i能够识别的IP):
+                #it is ip
+                #example
+                192.168.1.19:3333
+                192.168.1.19:4444
+                192.168.1.19:5555
+            4)修改application.properties, 切换到mysql数据库(需要在mysql数据库中新建nacos_config,步骤跟window上一样，找到脚本执行就行了):
+                spring.datasource.platform=mysql
+                db.num=1
+                db.url.0=jdbc:mysql://192.168.1.19:3311/nacos_config?characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true
+                db.user=root
+                db.password=123456
+            5)编辑nacos的启动脚本startup.sh，使它能够接受不同的启动端口:
+                找到/mynacos/nacos/bin目录下的startup.sh,修改2处地方:
+                找到对应的地方,修改成如下的样子
+                (1)while getopts ":m:f:s:p:" opt
+                   do
+                       case $opt in
+                           m)
+                               MODE=$OPTARG;;
+                           f)
+                               FUNCTION_MODE=$OPTARG;;
+                           s)
+                               SERVER=$OPTARG;;
+                   	       p)
+                   	           PORT=$OPTARG;;
+                           ?)
+                           echo "Unknown parameter"
+                           exit 1;;
+                       esac
+                   done
+                (2)# start
+                   echo "$JAVA ${JAVA_OPT}" > ${BASE_DIR}/logs/start.out 2>&1 &
+                   (主要是这里,新增-Dserver.port=${PORT}):
+                   nohup $JAVA -Dserver.port=${PORT} ${JAVA_OPT} nacos.nacos >> ${BASE_DIR}/logs/start.out 2>&1 &
+                   echo "nacos is starting，you can check the ${BASE_DIR}/logs/start.out"
+            6)启动集群:
+                在nacos/bin目录下:
+                    ./startup.sh -p 3333
+                    ./startup.sh -p 4444
+                    ./startup.sh -p 5555
+                 查看集群个数:ps -ef | grep nacos |grep -v grep|wc -l
+                 结果: 3
+        2、Nginx(负载均衡)配置
+            1)下载nginx-linux
+            2)修改配置文件nginx.conf:
+                upstream cluster{
+                        server 127.0.0.1:3333;
+                        server 127.0.0.1:4444;
+                        server 127.0.0.1:5555;
+                }
+                server监听端口修改为1111
+                  server {
+                        listen       1111; #修改监听端口
+                        server_name  localhost;
+                
+                        #charset koi8-r;
+                
+                        #access_log  logs/host.access.log  main;
+                
+                        location / {
+                            #root   html;
+                            #index  index.html index.htm;
+                            proxy_pass http://cluster; 
+                        }
+                        .
+                        .
+                        .
+                        省略
+            3)启动: 
+                在sbin目录下:
+                    ./nginx - c 配置文件
+                    例如: ./nginx -c /opt/nginx/conf/nginx.conf
+        
+        3、访问: http://192.168.1.19:1111/nacos(根据自己实际情况)     
+      
+        
 #### 作者：zeny
