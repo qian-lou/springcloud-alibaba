@@ -11,9 +11,14 @@ spring:
       config:
         server-addr: localhost:8848 #nacos作为配置中心地址
         file-extension: yaml        #指定yaml格式的配置
+        group: DEV_GROUP
+        namespace: ec880473-0cab-4e55-b474-792a56da6ed0
 
 #在nacos上新建配置文件的时候，dataId
 #${spring.application.name}-${spring.profile.active}-${spring.cloud.nacos.config.file-extension}
 #服务名称-开发环境【在application.yml中配置】.文件格式
 #例如: nacos-config-client-dev.yaml
 #注意: 不能写成yml,要对应
+# 一级: namespace
+# 二级: group
+#意思是这个命名空间下的这个组的配置文件

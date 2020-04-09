@@ -235,4 +235,18 @@ springcloud alibaba
 #### nacos配置中心config
     bootstrap优先级高于application
     项目: cloudalibaba-config-nacos-client3377
+#### nacos集群和持久化--Linux + mysql下
+    Nacos官网: https://nacos.io/zh-cn/docs/deployment.html
+    Nacos默认自带的嵌入式数据库derby
+    derby到mysql的切换配置步骤:
+        1、安装数据库，版本要求：5.6.5+
+        1、nacos-server-1.1.4\nacos\conf目录下找到sql脚本 -> 执行nacos-mysql.sql脚本
+        2、nacos-server-1.1.4\nacos\conf目录下找到application.properties,增加支持mysql数据源配置（目前只支持mysql）,添加mysql数据源的url、用户名和密码
+            添加(根据自己的实际情况修改):
+                #持久化到mysql
+                spring.datasource.platform=mysql
+                db.num=1
+                db.url.0=jdbc:mysql://192.168.1.19:3311/nacos_config?characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true
+                db.user=root
+                db.password=123456
 #### 作者：zeny
