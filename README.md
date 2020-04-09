@@ -250,6 +250,7 @@ springcloud alibaba
                 db.user=root
                 db.password=123456
     Linux集群:
+    下载: nacos-server-1.1.4.tar.gz
         192.168.1.19:3333
         192.168.1.19:4444
         192.168.1.19:5555
