@@ -238,7 +238,7 @@ springcloud alibaba
 #### nacos集群和持久化--Linux + mysql下
     Nacos官网: https://nacos.io/zh-cn/docs/deployment.html
     Nacos默认自带的嵌入式数据库derby
-    derby到mysql的切换配置步骤:
+    window:derby到mysql的切换配置步骤:
         1、安装数据库，版本要求：5.6.5+
         1、nacos-server-1.1.4\nacos\conf目录下找到sql脚本 -> 执行nacos-mysql.sql脚本
         2、nacos-server-1.1.4\nacos\conf目录下找到application.properties,增加支持mysql数据源配置（目前只支持mysql）,添加mysql数据源的url、用户名和密码
