@@ -330,6 +330,29 @@ springcloud alibaba
         
         3、访问: http://192.168.1.19:1111/nacos(根据自己实际情况)     
       
-#### Sentinel
+#### Sentinel限流熔断
     sentinel-dashboard-1.6.0.jar
+    生产者: cloudalibaba-provider-payment9003
+            cloudalibaba-provider-payment9004
+    消费者: cloudalibaba-consumer-nacos-order84
+    测试sentinel功能: cloudalibaba-sentinel-service8401
+        sentinel配置持久化:
+            在nacos中新建配置文件,dataId是服务名称,json格式,内容如下
+            [{
+                "resource":"/rateLimit",
+                "limitApp":"default",
+                "grade":1,
+                "count":1,
+                "strategy":0,
+                "controlBehavior":0,
+                "clusterMode":false
+            }]
+            参数解析:
+                "resource":资源名称,
+                "limitApp":来源应用,
+                "grade":阈值类型, 0表示线程数, 1表示QPS,
+                "count":单机阈值,
+                "strategy":流控模式, 0表示直接, 1表示关联, 2表示链路,
+                "controlBehavior": 流控效果, 0表示快速失败, 1表示Warm Up, 2表示排队等待,
+                "clusterMode":是否集群
 #### 作者：zeny
