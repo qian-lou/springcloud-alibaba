@@ -355,5 +355,8 @@ springcloud alibaba
                 "strategy":流控模式, 0表示直接, 1表示关联, 2表示链路,
                 "controlBehavior": 流控效果, 0表示快速失败, 1表示Warm Up, 2表示排队等待,
                 "clusterMode":是否集群
+#### seata 
+    官网http://seata.io/zh-cn/
+    
 #### 详情参考 SpringCloudAlibaba.mmap
 #### 作者：zeny
