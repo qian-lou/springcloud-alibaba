@@ -363,5 +363,19 @@ springcloud alibaba
         seata-account-service2003
         在业务上添加 @GlobalTransactional(name = "fsp-create-order", rollbackFor = Exception.class)
     
+####  hutool
+    利用雪花算法生成分布式ID  
+    优点:
+        毫秒数在高位,自增序列在低位,整个ID都是趋势递增
+        不依赖数据库等第三方系统,以服务的方式部署,稳定性更高,生成ID的性能也是非常高
+        可以根据自身业务特性分配bit,非常灵活
+    缺点:
+        依赖机器时钟,如果机器时钟回拨,会导致重复ID生成
+        在单机上是递增的,但是由于设计到分布式环境,每台机器上的时钟不可能完全同步,有时候会出现不是全局递增的情况
+        (此缺点可以认为无所谓,一般分布式ID只要趋势递增,并不会严格要求递增,90%的需求都只要求趋势递增)
+        
+        解决时钟回拨导致的问题参考:
+            百度开源的分布式唯一ID生成器UidGenerator
+            leaf--美团点评分布式ID生成系统
 #### 详情参考 SpringCloudAlibaba.mmap
 #### 作者：zeny
