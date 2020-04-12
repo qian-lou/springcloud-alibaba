@@ -363,7 +363,7 @@ springcloud alibaba
         seata-account-service2003
         在业务上添加 @GlobalTransactional(name = "fsp-create-order", rollbackFor = Exception.class)
     
-####  hutool
+####  hutool https://hutool.cn/
     利用雪花算法生成分布式ID  
     优点:
         毫秒数在高位,自增序列在低位,整个ID都是趋势递增
