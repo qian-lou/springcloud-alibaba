@@ -7,8 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.concurrent.*;
 
 /**
  * @ClassName IdGeneratorSnowflake
@@ -48,14 +47,11 @@ public class IdGeneratorSnowflake {
     }
 
     public static void main(String[] args) {
-//        long snowflakeId = new IdGeneratorSnowflake().snowflakeId();
-//        System.out.println(snowflakeId);
-
         ExecutorService threadPool = Executors.newFixedThreadPool(5);
         for (int i = 0; i < 100; i++) {
             threadPool.submit(()-> {
                 long snowflakeId = new IdGeneratorSnowflake().snowflakeId();
-                System.out.println(snowflakeId);
+                System.out.println(Thread.currentThread().getName() + ":" + snowflakeId);
             });
         }
         threadPool.shutdown();
