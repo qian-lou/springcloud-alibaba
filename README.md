@@ -357,6 +357,11 @@ springcloud alibaba
                 "clusterMode":是否集群
 #### seata 
     官网http://seata.io/zh-cn/
+    全局事务实战:
+        seata-order-service2001
+        seata-storage-service2002
+        seata-account-service2003
+        在业务上添加 @GlobalTransactional(name = "fsp-create-order", rollbackFor = Exception.class)
     
 #### 详情参考 SpringCloudAlibaba.mmap
 #### 作者：zeny
