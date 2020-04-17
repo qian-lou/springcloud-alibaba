@@ -1,7 +1,7 @@
 # springcloud alibaba
 
 #### 介绍
-springcloud alibaba常用组件,需要用到的直接拷贝一份demo既可以在此基础上开发(根据自己实际情况修改)
+springcloud alibaba常用组件,需要用到的直接拷贝一份demo即可以在此基础上开发(根据自己实际情况修改)
 
 #### eureka高可用集群配置：
     在hosts文件配置:
