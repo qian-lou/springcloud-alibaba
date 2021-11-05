@@ -378,4 +378,4 @@ springcloud alibaba常用组件,需要用到的直接拷贝一份demo即可以�
             百度开源的分布式唯一ID生成器UidGenerator
             leaf--美团点评分布式ID生成系统
 #### 详情参考 SpringCloudAlibaba.mmap
-#### 作者：zeny
+#### 作者：千楼(zeny)
